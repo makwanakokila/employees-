@@ -7,6 +7,7 @@ const attendanceSchema = new mongoose.Schema(
     status: { type: String, enum: ['Present', 'Late', 'Absent'], required: true },
     checkInTime: { type: String, default: null },
     checkOutTime: { type: String, default: null },
+    overtimeMinutes: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
@@ -14,5 +15,3 @@ const attendanceSchema = new mongoose.Schema(
 attendanceSchema.index({ employee: 1, date: 1 }, { unique: true });
 
 export default mongoose.model('Attendance', attendanceSchema);
-
-
